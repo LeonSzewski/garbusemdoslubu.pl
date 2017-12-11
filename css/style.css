@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+html, body, header {
+    height: 100%;
+    width: 100%;
+}
+
+/*
+.nav {
+    
+}
+
+.nav a {
+    text-decoration: none;
+    float: right;
+}
+*/
+
+.welcomePicture {
+    background-image: url(../images/welcome-picture.jpg);
+    display: block;
+    position: relative;
+    height: 100vh;
+/*    opacity: 0.85;*/
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.welcomeHeader {
+    width: 100%;
+    background-color: RGBA(39, 14, 14, 0.8);
+    position: absolute;
+    top: 20%;
+    z-index: 1;
+    text-align: center;
+    padding: 2% 0;
+
+}
+
+.welcomeHeader span{
+    color: #fff;
+    margin: 0 auto;
+    font-size: 3em;
+    width: 300px;
+    display: block;
+
+}
+
+@media (min-width: 768px) {
+    .welcomeHeader span {
+        font-size: 4em;
+        font-weight: 500;
+        letter-spacing: 10px;
+        width: 400px;
+    }
+}
+
+/*
+@media (min-width: 992px) {
+    header span {
+        font-size: 5em;
+        font-weight: 700;
+        letter-spacing: 15px
+    }
+}
+
+@media (min-width: 1200px) {
+    header span {
+        font-size: 5em;
+        font-weight: 700;
+        letter-spacing: 15px
+    }
+}
+*/
