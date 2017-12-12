@@ -81,33 +81,30 @@ label {
     top: 5%;
 }
 
-.welcomeHeader {
-    text-align: center;
-    color: #fff;
-    font-size: 3em;
-}
-
-.offer {
-    background-color: rgba(39, 14, 14, 0.8);
+.offer, .contact, .welcomeHeader{
     width: 300px;
     height: 260px;
     position: absolute;
-    top: 10px;
+    /*top: 10px;*/
     color: #fff;
     text-align: center;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.offer h2 {
+.welcomeHeader {
+    font-size: 3em;
+}
+
+.offer h2, .contact h2 {
     line-height: 60px;
 }
 
-.offer h3 {
+.offer h3, .contact h3 {
     line-height: 40px;
 }
 
-.offer p {
+.offer p, .contact p {
     line-height: 30px;
 }
 
@@ -119,7 +116,6 @@ label {
 .icons {
     display: none;
 }
-
 
 .contact a{
     text-decoration: none;
