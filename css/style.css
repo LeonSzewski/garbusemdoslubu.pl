@@ -9,7 +9,13 @@ html, body, header {
 }
 
 .hidden {
-    display: none;
+    
+    /*display: none;*/
+}
+
+.active {
+
+    /*display: inherit;*/
 }
 
 .welcomePicture {
@@ -70,8 +76,10 @@ label {
 
 .contentBox {
     background-color: rgba(39, 14, 14, 0.8);
-    width: 300px;
-    height: 260px;
+    /*width: 300px;*/
+    width: 90%;
+    /*height: 260px;*/
+    height: 50%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -85,7 +93,6 @@ label {
     width: 300px;
     height: 260px;
     position: absolute;
-    /*top: 10px;*/
     color: #fff;
     text-align: center;
     left: 50%;
@@ -112,6 +119,21 @@ label {
     margin-top: 20px;
     font-size: 11px;
 }
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.gallery img {
+    width: 25%;
+    max-height: 100%;
+    padding: 4%;
+}
+
 
 .icons {
     display: none;
