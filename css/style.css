@@ -9,12 +9,12 @@ html, body, header {
 }
 
 .hidden {
-    
+    visibility: hidden;
     /*display: none;*/
 }
 
 .active {
-
+    visibility: visible;
     /*display: inherit;*/
 }
 
