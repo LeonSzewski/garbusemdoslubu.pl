@@ -46,11 +46,14 @@
     </section>
     <footer>
         <nav class="nav">
-            <input type="checkbox" id="collapse" class="hidden">
-            <label for="collapse"></label>
-            <a id="offerButton" onclick="clicked('.offer')" href="#offer" class="button">Oferta</a>
-            <a href="#gallery" onclick="clicked('.gallery')" class="button">Zdjęcia</a>
-            <a href="#contact" onclick="clicked('.contact')" class="button">Kontakt</a>
+            <!--<input type="checkbox" id="collapse" class="hidden">-->
+            <!--<label for="collapse"></label>-->
+            <span onclick="clickedMenuButton()" class="menuButton"></span>
+            <ul id="menu" class="button">
+                <a id="offerButton" onclick="clicked('.offer')" href="#offer">Oferta</a>
+                <a href="#gallery" onclick="clicked('.gallery')">Zdjęcia</a>
+                <a href="#contact" onclick="clicked('.contact')">Kontakt</a>
+            </ul>
         </nav>
         <p>Copyright © 2017 garbus.szczecin.pl - wszelkie prawa zastrzeżone</p>
     </footer>

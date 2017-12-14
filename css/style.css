@@ -39,17 +39,20 @@ html, body, header {
     height: 50px;
 }
 
-.nav a {
-    text-decoration: none;
-    color: #000000;
-    height: 20px;
-    padding: 5px;
-    transition: all, .5s;
+#menu {
+    /*transition: all, .5s;*/
     visibility: hidden;
-    margin-right: 5px;
 }
 
-label:before {
+.button a{
+    text-decoration: none;
+    color: #000000;
+    margin-right: 5px;
+    height: 20px;
+    padding: 5px;
+}
+
+.menuButton:before {
     height:2px;
     width:20px;
     background: #000000;
@@ -61,7 +64,7 @@ label:before {
     position:relative;
 }
 
-label {
+.menuButton {
     display:block;
     color: #000000;
     cursor:pointer;
@@ -70,9 +73,9 @@ label {
     margin-right: 20px;
 }
 
-#collapse:checked ~ a{  
-    visibility: visible;
-}
+/*#collapse:checked ~ a{  */
+    /*visibility: visible;*/
+/*}*/
 
 .contentBox {
     background-color: rgba(39, 14, 14, 0.8);
