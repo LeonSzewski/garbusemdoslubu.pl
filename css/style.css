@@ -10,12 +10,10 @@ html, body, header {
 
 .hidden {
     visibility: hidden;
-    /*display: none;*/
 }
 
 .active {
     visibility: visible;
-    /*display: inherit;*/
 }
 
 .welcomePicture {
@@ -39,20 +37,14 @@ html, body, header {
     height: 50px;
 }
 
-#menu {
-    /*transition: all, .5s;*/
-    visibility: hidden;
-}
-
-.button a{
-    text-decoration: none;
-    color: #000000;
+.menu a{
     margin-right: 5px;
     height: 20px;
     padding: 5px;
+    cursor: pointer;
 }
 
-.menuButton:before {
+.navButton:before {
     height:2px;
     width:20px;
     background: #000000;
@@ -60,11 +52,10 @@ html, body, header {
     content:"";
     box-shadow:0px -5px 0px 0px  #000000,
                 0px -10px 0px 0px #000000;
-    transition:all .5s;
     position:relative;
 }
 
-.menuButton {
+.navButton {
     display:block;
     color: #000000;
     cursor:pointer;
@@ -72,10 +63,6 @@ html, body, header {
     margin-left: 15px;
     margin-right: 20px;
 }
-
-/*#collapse:checked ~ a{  */
-    /*visibility: visible;*/
-/*}*/
 
 .contentBox {
     background-color: rgba(39, 14, 14, 0.8);
