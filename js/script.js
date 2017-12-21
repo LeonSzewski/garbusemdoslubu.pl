@@ -12,6 +12,7 @@ var menu = document.querySelector('.menu'),
                     if (!contentId.classList.contains('active')) {
                         let activeContent = document.querySelector('.active');
                         activeContent.classList.remove('active');
+                        document.querySelector('.contentBox').classList.remove('hidden');
                         contentId.classList.add('active');
                     }
                 })

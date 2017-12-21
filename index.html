@@ -7,12 +7,22 @@
     <title>Garbusem do ślubu!</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
-<body>
+<body class="welcomePicture">
     <header>
-        <div class="welcomePicture"></div>
+        <span class="welcomeHeader hidden active">Garbusem do ślubu!</span>
+        <nav class="nav">
+            <!--<input type="checkbox" id="collapse" class="hidden">-->
+            <!--<label for="collapse"></label>-->
+            <span class="navButton"></span>
+            <ul class="menu hidden">
+                <a href="index.html" class="mainPageButton">Główna</a>
+                <a name="offer" class="button">Oferta</a>
+                <a name="gallery" class="button">Zdjęcia</a>
+                <a name="contact" class="button">Kontakt</a>
+            </ul>
+        </nav>
     </header>
-    <section class="contentBox">
-        <span id="main" class="welcomeHeader hidden">Garbusem do ślubu!</span>
+    <section class="contentBox hidden">
         <div id="offer" class="offer hidden">
             <h2>VW Garbus 1302 '72</h2>
             <div class="icons">
@@ -27,7 +37,7 @@
             <p>cały dzień = 600 zł</p>
             <p>*na terenie Szczecina (poza miastem - do uzgodnienia)</p>
         </div>
-        <div id="contact" class="contact hidden active">
+        <div id="contact" class="contact hidden">
             <h2>Zapraszam do kontaktu:</h2>
             <p>+48 509 636 857</p>
             <a href="mailto:garbus.szczecin@gmail.com">garbus.szczecin@gmail.com</a>
@@ -45,18 +55,7 @@
         </div>
     </section>
     <footer>
-        <nav class="nav">
-            <!--<input type="checkbox" id="collapse" class="hidden">-->
-            <!--<label for="collapse"></label>-->
-            <span class="navButton"></span>
-            <ul class="menu hidden">
-                <a name="main" class="button">Główna</a>
-                <a name="offer" class="button">Oferta</a>
-                <a name="gallery" class="button">Zdjęcia</a>
-                <a name="contact" class="button">Kontakt</a>
-            </ul>
-        </nav>
-        <p>Copyright © 2017 garbus.szczecin.pl - wszelkie prawa zastrzeżone</p>
+        <!--<p>Copyright © 2017 garbus.szczecin.pl - wszelkie prawa zastrzeżone</p>-->
     </footer>
 <script src="js/script.js"></script>
 </body>
