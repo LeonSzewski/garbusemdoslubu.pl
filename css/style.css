@@ -205,6 +205,6 @@ header {
 @media (min-width: 1200px) {
     .contentBox {
         left: 10%;
-        top: 30%;
+        top: 10%;
     }
 }
