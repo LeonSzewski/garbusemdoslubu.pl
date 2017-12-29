@@ -28,7 +28,6 @@ header {
     background-image: url(../images/welcome-picture.jpg);
     position: relative;
     height: 100vh;
-    opacity: 0.95;
     background-position: right bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -132,17 +131,17 @@ header {
 }
 
 .gallery {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+    padding: 10px;
 }
 
 .gallery img {
-    width: 22%;
-    max-height: 100%;
-    padding: 2%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .contact a{
