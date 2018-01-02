@@ -142,6 +142,7 @@ header {
 .gallery img {
     width: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .contact a{
@@ -149,17 +150,12 @@ header {
     color: #fff;
 }
 
-#imageModal {
-    background-color: rgba(39, 14, 14, 1);
-    position: relative;
+#galleryBox img {
     z-index: 1;
-    height: 100vh;
-}
-
-#imageModal img {
     max-width: 95%;
     max-height: 95%;
-    position: relative;
+    position: absolute;
+    border: solid 10px rgba(39, 14, 14, 1);
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -206,18 +202,6 @@ header {
 
     .offer h3, .contact h3 {
         line-height: 70px;
-    }
-
-    #imageModal {
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        background: none;
-    }
-
-    #imageModal img {
-        position: absolute;
-        border: solid 10px rgba(39, 14, 14, 1);
     }
 }
 

@@ -1,8 +1,7 @@
-var menu = document.querySelector('.menu'),
-    menuButton = document.querySelectorAll('.button'),
-    navButton = document.querySelector('.navButton');
-
 (function () {
+    var menu = document.querySelector('.menu'),
+        menuButton = document.querySelectorAll('.button'),
+        navButton = document.querySelector('.navButton');
     navButton.addEventListener('click', function (event) {
         menu.classList.toggle('hidden');
         if (!menu.classList.contains('hidden')) {
@@ -19,5 +18,21 @@ var menu = document.querySelector('.menu'),
             }
         )
         }
+    })
+})();
+
+(function openGalleryBox() {
+    var thumbnails = document.querySelectorAll('.gallery img'),
+        galleryBox = document.querySelector('#galleryBox'),
+        imageInGalleryBox = document.querySelector('#galleryBox img');
+
+
+    thumbnails.forEach(function (value) {
+        value.addEventListener('click', function (event) {
+            let imageSrc = JSON.stringify(event.currentTarget.src).replace('thumbnail.jpg', 'jpg');
+            imageSrc = JSON.parse(imageSrc);
+            galleryBox.classList.add('active');
+            imageInGalleryBox.setAttribute('src', imageSrc);
+        })
     })
 })();
