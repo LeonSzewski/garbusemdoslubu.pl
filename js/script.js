@@ -2,6 +2,7 @@
     var menu = document.querySelector('.menu'),
         menuButton = document.querySelectorAll('.button'),
         navButton = document.querySelector('.navButton');
+
     navButton.addEventListener('click', function (event) {
         menu.classList.toggle('hidden');
         if (!menu.classList.contains('hidden')) {
@@ -24,8 +25,8 @@
 (function openGalleryBox() {
     var thumbnails = document.querySelectorAll('.gallery img'),
         galleryBox = document.querySelector('#galleryBox'),
-        imageInGalleryBox = document.querySelector('#galleryBox img');
-
+        imageInGalleryBox = document.querySelector('#galleryBox img'),
+        closeButton = document.querySelector('#closeButton');
 
     thumbnails.forEach(function (value) {
         value.addEventListener('click', function (event) {
@@ -34,5 +35,11 @@
             galleryBox.classList.add('active');
             imageInGalleryBox.setAttribute('src', imageSrc);
         })
-    })
+    });
+
+    if (galleryBox.classList.contains('active')) {
+        closeButton.addEventListener('click', function (event) {
+            galleryBox.classList.remove('active');
+        })
+    }
 })();
