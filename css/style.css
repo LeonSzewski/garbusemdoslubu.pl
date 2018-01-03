@@ -151,6 +151,7 @@ header {
 }
 
 #imageBox {
+    background: transparent;
     width: fit-content;
     height: fit-content;
     z-index: 1;
@@ -158,15 +159,50 @@ header {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    border: solid 20px transparent;
+    box-sizing: border-box;
 }
 
 #imageBox img {
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 100%;
+    max-height: 93%;
     position: relative;
     border: solid 10px rgba(39, 14, 14, 1);
+    box-sizing: border-box;
     left: 50%;
     transform: translateX(-50%);
+}
+
+#close {
+    background: rgba(39, 14, 14, 0.8);
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#close:after {
+    content: '';
+    height: 4em;
+    border-left: .3em solid #ffffff;
+    position: absolute;
+    transform-origin: center;
+    transform: rotate(-45deg);
+    left: 1.85em;
+}
+
+#close:before {
+    content: '';
+    height: 4em;
+    border-left: .3em solid #ffffff;
+    position: absolute;
+    transform-origin: center;
+    transform: rotate(45deg);
+    right: 1.85em;
 }
 
 @media (min-width: 768px) {

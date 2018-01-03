@@ -36,10 +36,7 @@
             imageInGalleryBox.setAttribute('src', imageSrc);
         })
     });
-
-    if (galleryBox.classList.contains('active')) {
-        closeButton.addEventListener('click', function (event) {
-            imageBox.classList.remove('active');
-        })
-    }
+    closeButton.addEventListener('click', function (event) {
+        imageBox.classList.remove('active');
+    })
 })();
