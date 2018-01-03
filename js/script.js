@@ -24,22 +24,22 @@
 
 (function openGalleryBox() {
     var thumbnails = document.querySelectorAll('.gallery img'),
-        galleryBox = document.querySelector('#galleryBox'),
-        imageInGalleryBox = document.querySelector('#galleryBox img'),
-        closeButton = document.querySelector('#closeButton');
+        imageBox = document.querySelector('#imageBox'),
+        imageInGalleryBox = document.querySelector('#imageBox img'),
+        closeButton = document.querySelector('#close');
 
     thumbnails.forEach(function (value) {
         value.addEventListener('click', function (event) {
             let imageSrc = JSON.stringify(event.currentTarget.src).replace('thumbnail.jpg', 'jpg');
             imageSrc = JSON.parse(imageSrc);
-            galleryBox.classList.add('active');
+            imageBox.classList.add('active');
             imageInGalleryBox.setAttribute('src', imageSrc);
         })
     });
 
     if (galleryBox.classList.contains('active')) {
         closeButton.addEventListener('click', function (event) {
-            galleryBox.classList.remove('active');
+            imageBox.classList.remove('active');
         })
     }
 })();

@@ -150,15 +150,23 @@ header {
     color: #fff;
 }
 
-#galleryBox img {
+#imageBox {
+    width: fit-content;
+    height: fit-content;
     z-index: 1;
-    max-width: 95%;
-    max-height: 95%;
     position: absolute;
-    border: solid 10px rgba(39, 14, 14, 1);
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+}
+
+#imageBox img {
+    max-width: 95%;
+    max-height: 95%;
+    position: relative;
+    border: solid 10px rgba(39, 14, 14, 1);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @media (min-width: 768px) {
