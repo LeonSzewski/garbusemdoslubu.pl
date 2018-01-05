@@ -173,36 +173,69 @@ header {
     transform: translateX(-50%);
 }
 
-#close {
+.imageBoxIcon {
     background: rgba(39, 14, 14, 0.8);
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
     position: absolute;
-    z-index: 2;
-    right: 10px;
-    top: 10px;
     cursor: pointer;
     margin: 10px;
 }
 
-#close:after {
-    content: '';
-    height: 4em;
-    border-left: .3em solid #ffffff;
-    position: absolute;
-    transform-origin: center;
-    transform: rotate(-45deg);
-    left: 1.85em;
+.close {
+    z-index: 2;
+    right: 10px;
+    top: 10px;
 }
 
-#close:before {
+.close:after {
     content: '';
-    height: 4em;
-    border-left: .3em solid #ffffff;
+    height: 3em;
+    border-left: .25em solid #ffffff;
     position: absolute;
-    transform-origin: center;
+    transform: rotate(-45deg);
+    left: 1.375em;
+}
+
+.close:before {
+    content: '';
+    height: 3em;
+    border-left: .25em solid #ffffff;
+    position: absolute;
     transform: rotate(45deg);
-    right: 1.85em;
+    right: 1.375em;
+}
+
+.next {
+    z-index: 2;
+    right: 10px;
+    bottom: 10px;
+}
+
+.previous {
+    z-index: 2;
+    left: 10px;
+    bottom: 10px;
+}
+
+.next i, .previous i {
+    height: 1.7em;
+    width: 1.7em;
+    border: solid #ffffff;
+    border-width: 0 0.25em 0.25em 0;
+    transform-origin: 100% 100%;
+    position: absolute;
+    top: -15%;
+}
+
+.next i {
+    transform: rotate(-45deg);
+    right: 20%;
+}
+
+.previous i {
+    transform: rotate(135deg);
+    right: 80%;
 }
 
 @media (min-width: 768px) {
