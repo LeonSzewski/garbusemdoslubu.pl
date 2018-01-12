@@ -1,5 +1,5 @@
 (function () {
-    var menu = document.querySelector('.menu'),
+    let menu = document.querySelector('.menu'),
         menuButton = document.querySelectorAll('.button'),
         navButton = document.querySelector('.navButton');
 
@@ -23,7 +23,7 @@
 })();
 
 (function openGalleryBox() {
-    var thumbnails = Array.from(document.querySelectorAll('.gallery img')),
+    let thumbnails = Array.from(document.querySelectorAll('.gallery img')),
         imageBox = document.querySelector('#imageBox'),
         imageInGalleryBox = document.querySelector('#imageBox img'),
         closeButton = document.querySelector('.close'),
