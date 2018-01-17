@@ -18,10 +18,14 @@ header {
 
 .hidden {
     visibility: hidden;
+    opacity: 0;
+    transition: linear 300ms, opacity 300ms;
 }
 
 .active {
     visibility: visible;
+    opacity: 1;
+    transition: linear 0s, opacity 300ms;
 }
 
 .welcomePicture {
@@ -46,7 +50,9 @@ header {
 
 .menu {
     padding: 0;
-
+    visibility: hidden;
+    opacity: 0;
+    transition: linear 300ms, opacity 300ms;
 }
 
 .menu a{
@@ -57,6 +63,12 @@ header {
     text-transform: lowercase;
     padding: 10px 3px;
     cursor: pointer;
+}
+
+.activeMenu {
+    visibility: visible;
+    opacity: 1;
+    transition: linear 0s, opacity 300ms;
 }
 
 .navButton:before {
@@ -94,7 +106,8 @@ header {
     position: absolute;
     text-align: center;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .welcomeHeader {
