@@ -4,15 +4,23 @@
         navButton = document.querySelector('.navButton');
 
     navButton.addEventListener('click', function (event) {
-        menu.classList.toggle('activeMenu');
+        menu.classList.toggle('navOpenClose');
         menuButton.forEach(function (value) {
             value.addEventListener('click', function (event) {
                 let contentId = document.getElementById(event.currentTarget.name),
-                    activeContent = document.querySelector('.active');
+                    activeContent = document.querySelector('.active'),
+                    activeMenuButton = document.querySelector('.activeMenuButton'),
+                    clickedMenuButton = event.currentTarget.classList;
 
                 if (!contentId.classList.contains('active')) {
                     activeContent.classList.remove('active');
                     contentId.classList.add('active');
+                    clickedMenuButton.add('activeMenuButton')
+                }
+
+                if (activeMenuButton.classList.contains('activeMenuButton')) {
+                    activeMenuButton.classList.remove('activeMenuButton');
+                    clickedMenuButton.add('activeMenuButton');
                 }
             });
         });

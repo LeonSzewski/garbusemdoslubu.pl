@@ -65,7 +65,13 @@ header {
     cursor: pointer;
 }
 
-.activeMenu {
+.menu .activeMenuButton {
+    border-bottom: solid 2px #ffffff;
+    display: inline-block;
+    line-height: 0.5;
+}
+
+.navOpenClose {
     visibility: visible;
     opacity: 1;
     transition: linear 0s, opacity 300ms;
@@ -277,6 +283,17 @@ header {
     .menu a{
         color: #000;
         padding: 10px 15px;
+    }
+
+    .menu a:hover {
+        color:#ffffff;
+    }
+
+    .menu .activeMenuButton {
+        color: #ffffff;
+        border-bottom: none;
+        display: inline-block;
+        line-height: 1;
     }
 
     .navButton:before {
