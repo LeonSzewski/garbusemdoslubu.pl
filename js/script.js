@@ -42,7 +42,6 @@ function attachThumbnailsListener() {
 
             imageBox.classList.add('active');
             imageInGalleryBox.setAttribute('src', imageSrc);
-            attachGalleryBoxButtonListener();
             imageLoadingAndErrorCheck();
         });
     });
@@ -64,26 +63,24 @@ function attachGalleryBoxButtonListener() {
     nextButton.addEventListener('click', function (event) {
 
         for (let i = 0; i < thumbnails.length - 1; i++) {
-            // if (i === thumbnails.length - 1) return;
-            console.log(image.getAttribute('src'));
-            console.log(thumbnails[i].src.replace('thumbnail.jpg', 'jpg'));
+            if (i === thumbnails.length - 1) return;
             if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === image.getAttribute('src')) {
                 return image.setAttribute('src', thumbnails[i + 1].src.replace('thumbnail.jpg', 'jpg'));
             }
         }
-        // imageLoadingAndErrorCheck();
+        imageLoadingAndErrorCheck();
     });
 
-    // previousButton.addEventListener('click', function (event) {
-    //
-    //     for (let i = thumbnails.length - 1; i > 0 - 1; i--) {
-    //         if (i === 0) return;
-    //         if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === image.getAttribute('src')) {
-    //             return image.setAttribute('src', thumbnails[i - 1].src.replace('thumbnail.jpg', 'jpg'));
-    //         }
-    //     }
-    //     imageLoadingAndErrorCheck();
-    // });
+    previousButton.addEventListener('click', function (event) {
+
+        for (let i = thumbnails.length - 1; i > 0 - 1; i--) {
+            if (i === 0) return;
+            if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === image.getAttribute('src')) {
+                return image.setAttribute('src', thumbnails[i - 1].src.replace('thumbnail.jpg', 'jpg'));
+            }
+        }
+        imageLoadingAndErrorCheck();
+    });
 }
 
 function imageLoadingAndErrorCheck() {
@@ -116,3 +113,4 @@ function resetImageLoadingAndErrorCheck() {
 
 attachMenuButtonListener();
 attachThumbnailsListener();
+attachGalleryBoxButtonListener();
