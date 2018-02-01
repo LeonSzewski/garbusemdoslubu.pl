@@ -1,113 +1,118 @@
-function openMenu() {
-    let menu = document.querySelector('.menu'),
-        menuButton = document.querySelectorAll('.button'), navButton = document.querySelector('.navButton');
+function attachMenuButtonListener() {
+    const menu = document.querySelector('.menu');
+    const navButton = document.querySelector('.navButton');
 
     navButton.addEventListener('click', function (event) {
         menu.classList.toggle('navOpenClose');
-        menuButton.forEach(function (value) {
-            value.addEventListener('click', function (event) {
-                let contentId = document.getElementById(event.currentTarget.name),
-                    activeContent = document.querySelector('.active'),
-                    activeMenuButton = document.querySelector('.activeMenuButton'),
-                    clickedMenuButton = event.currentTarget.classList;
+        attachTargetButtonsListener();
+    });
+}
 
-                if (!contentId.classList.contains('active')) {
-                    activeContent.classList.remove('active');
-                    contentId.classList.add('active');
-                    clickedMenuButton.add('activeMenuButton')
-                }
+function attachTargetButtonsListener() {
+    const menuButton = document.querySelectorAll('.button');
 
-                if (activeMenuButton.classList.contains('activeMenuButton')) {
-                    activeMenuButton.classList.remove('activeMenuButton');
-                    clickedMenuButton.add('activeMenuButton');
-                }
-            });
+    menuButton.forEach(function (value) {
+        value.addEventListener('click', function (event) {
+            let contentId = document.getElementById(event.currentTarget.name),
+                activeContent = document.querySelector('.active'),
+                activeMenuButton = document.querySelector('.activeMenuButton'),
+                clickedMenuButton = event.currentTarget.classList;
+
+            if (!contentId.classList.contains('active')) {
+                activeContent.classList.remove('active');
+                contentId.classList.add('active');
+                clickedMenuButton.add('activeMenuButton')
+            }
+
+            if (activeMenuButton.classList.contains('activeMenuButton')) {
+                activeMenuButton.classList.remove('activeMenuButton');
+                clickedMenuButton.add('activeMenuButton');
+            }
         });
     });
 }
 
-function openGalleryBox() {
-    let thumbnails = Array.from(document.querySelectorAll('.gallery img')),
-        imageBox = document.querySelector('#imageBox'),
-        imageInGalleryBox = document.querySelector('#imageBox img'),
-        closeButton = document.querySelector('.close'),
-        nextButton = document.querySelector('.next'),
-        previousButton = document.querySelector('.previous');
+function attachThumbnailsListener() {
+    const thumbnails = Array.from(document.querySelectorAll('.gallery img'));
+    const imageInGalleryBox = document.querySelector('.image-box__image__img');
 
-        thumbnails.map(function (value) {
+    thumbnails.map(function (value) {
         value.addEventListener('click', function (event) {
             let imageSrc = event.currentTarget.src.replace('thumbnail.jpg', 'jpg');
+
             imageBox.classList.add('active');
             imageInGalleryBox.setAttribute('src', imageSrc);
-
+            attachGalleryBoxButtonListener();
+            imageLoadingAndErrorCheck();
         });
     });
+}
+
+function attachGalleryBoxButtonListener() {
+    const thumbnails = Array.from(document.querySelectorAll('.gallery img'));
+    const imageBox = document.querySelector('.image-box');
+    const image = document.querySelector('.image-box__image__img');
+    const closeButton = document.querySelector('.image-box__icon--close');
+    const nextButton = document.querySelector('.image-box__icon--next');
+    const previousButton = document.querySelector('.image-box__icon--previous');
 
     closeButton.addEventListener('click', function (event) {
+        resetImageLoadingAndErrorCheck();
         imageBox.classList.remove('active');
     });
 
     nextButton.addEventListener('click', function (event) {
 
-        for (let i=0; i < thumbnails.length - 1; i++) {
-            if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === imageInGalleryBox.getAttribute('src')) {
-                return imageInGalleryBox.setAttribute('src', thumbnails[i+1].src.replace('thumbnail.jpg', 'jpg'));
+        for (let i = 0; i < thumbnails.length - 1; i++) {
+            // if (i === thumbnails.length - 1) return;
+            console.log(image.getAttribute('src'));
+            console.log(thumbnails[i].src.replace('thumbnail.jpg', 'jpg'));
+            if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === image.getAttribute('src')) {
+                return image.setAttribute('src', thumbnails[i + 1].src.replace('thumbnail.jpg', 'jpg'));
             }
         }
+        // imageLoadingAndErrorCheck();
     });
 
-    previousButton.addEventListener('click', function (event) {
-
-        for (let i=1; i < thumbnails.length; i++) {
-            if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === imageInGalleryBox.getAttribute('src')) {
-                return imageInGalleryBox.setAttribute('src', thumbnails[i-1].src.replace('thumbnail.jpg', 'jpg'));
-            }
-        }
-    });
-
-    imageLoadingAndErrorCheck();
-
+    // previousButton.addEventListener('click', function (event) {
+    //
+    //     for (let i = thumbnails.length - 1; i > 0 - 1; i--) {
+    //         if (i === 0) return;
+    //         if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === image.getAttribute('src')) {
+    //             return image.setAttribute('src', thumbnails[i - 1].src.replace('thumbnail.jpg', 'jpg'));
+    //         }
+    //     }
+    //     imageLoadingAndErrorCheck();
+    // });
 }
 
 function imageLoadingAndErrorCheck() {
-    const image = document.querySelector('.imageBoxImage-img');
-    const imageBox = document.querySelector('#imageBox');
-    const loadingImageAnimation = document.querySelector('.imageLoading');
+    const image = document.querySelector('.image-box__image__img');
+    const loader = document.querySelector('.loader');
+    const squareBox = document.querySelector('.loader__square-box');
+    const imageLoadingError = document.querySelector('.loader__error');
 
-    image.addEventListener('load', function () {
-        console.log('dupa');
-        loadingImageAnimation.classList.add('hidden');
-        imageBox.classList.remove('imageError');
+    image.addEventListener('load', function (event) {
+        resetImageLoadingAndErrorCheck();
+        loader.classList.add('hidden');
     });
 
-    image.addEventListener('error', function () {
-        loadingImageAnimation.classList.remove('hidden');
-        imageBox.classList.add('imageError');
+    image.addEventListener('error', function (event) {
+        resetImageLoadingAndErrorCheck();
+        imageLoadingError.classList.add('loader__error--show');
+        squareBox.classList.add('loader__square-box--hide');
     });
 }
 
-// if (document.querySelector('.imageBoxImage-img').onload = function() {
-//     console.log('wsdwwwwwwwwwww')
-//     return false;
-// }) {
-//     let loadingImageAnimation = document.querySelector('.imageLoading');
-//     loadingImageAnimation.classList.add('hidden');
-// } else {
-//     console.log('dsjmodwmo');
-// }
+function resetImageLoadingAndErrorCheck() {
+    const imageLoadingAnimation = document.querySelector('.loader');
+    const squareBox = document.querySelector('.loader__square-box');
+    const imageLoadingError = document.querySelector('.loader__error');
 
-//
-// const onLoadImage = new Promise (function (resolve, reject) {
-//     if (document.querySelector('.imageBoxImage-img').onload = function() {return true}) {
-//         let loadingImageAnimation = document.querySelector('.imageLoading');
-//         resolve(loadingImageAnimation.classList.add('hidden'));
-//     } else {
-//         reject(console.log('dsjmodwmo'));
-//     }
-// });
-//
-//
-// onLoadImage.then().catch();
+    imageLoadingAnimation.classList.remove('hidden');
+    imageLoadingError.classList.remove('loader__error--show');
+    squareBox.classList.remove('loader__square-box--hide');
+}
 
-openMenu();
-openGalleryBox();
+attachMenuButtonListener();
+attachThumbnailsListener();
