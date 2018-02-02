@@ -9,33 +9,35 @@
     <link rel="icon" type="image/png" href="images/icons/fav-icon.png">
 </head>
 <body class="main-page">
-    <header>
-        <nav class="nav">
-            <span class="nav__button"></span>
-            <div class="nav__items">
-                <a href="index.html" class="nav__items-button nav__items-button--active">Główna</a>
-                <a name="offer" class="nav__items-button">Oferta</a>
-                <a name="gallery" class="nav__items-button">Zdjęcia</a>
-                <a name="contact" class="nav__items-button">Kontakt</a>
-            </div>
-        </nav>
+    <header class="welcome-header">
+        <h3>Marzysz o cudownej przejażdżce w Twoim wyjątkowym dniu?</h3>
+        <h3>Przejedź się</h3><h1 class="welcome-header__text--big">Garbusem!!!</h1>
+        <p>Chcesz wiedzieć więcej? Sprawdź <a class="welcome-header__text--link" href="#offer"> ofertę</a></p>
     </header>
-    <section class="content-box">
-        <div class="content-box__main hidden active">Garbusem do ślubu!</div>
-        <div id="offer" class="content-box__offer hidden">
+    <nav class="nav">
+        <span class="nav__button"></span>
+        <div class="nav__items">
+            <a href="index.html" class="nav__items-button nav__items-button--active">Główna</a>
+            <a name="offer" class="nav__items-button">Oferta</a>
+            <a name="gallery" class="nav__items-button">Zdjęcia</a>
+            <a name="contact" class="nav__items-button">Kontakt</a>
+        </div>
+    </nav>
+    <main class="content-box hidden">
+        <section id="offer" class="content-box__offer hidden active">
             <h2>VW Garbus 1302 '72</h2>
             <h3>Wynajmij Garbusa z szoferem!</h3>
             <h3>Koszt*:</h3>
             <p>1h = 150 zł</p>
             <p>cały dzień = 600 zł</p>
             <p class="content-box__offer--small">*na terenie Szczecina (poza miastem - do uzgodnienia)</p>
-        </div>
-        <div id="contact" class="content-box__contact hidden">
+        </section>
+        <section id="contact" class="content-box__contact hidden">
             <h2>Kontakt</h2>
             <p>+48 509 636 857</p>
             <a class="content-box__contact--mail" href="mailto:garbus.szczecin@gmail.com">garbus.szczecin@gmail.com</a>
-        </div>
-        <div id="gallery" class="content-box__gallery hidden">
+        </section>
+        <section id="gallery" class="content-box__gallery hidden">
             <img class="content-box__thumbnail" src="images/gallery/image-1.thumbnail.jpg" alt="Zdjęcie garbusa">
             <img class="content-box__thumbnail" src="images/gallery/image-2.thumbnail.jpg" alt="Zdjęcie garbusa">
             <img class="content-box__thumbnail" src="images/gallery/image-3.thumbnail.jpg" alt="Zdjęcie garbusa">
@@ -45,8 +47,8 @@
             <img class="content-box__thumbnail" src="images/gallery/image-7.thumbnail.jpg" alt="Zdjęcie garbusa">
             <img class="content-box__thumbnail" src="images/gallery/image-8.thumbnail.jpg" alt="Zdjęcie garbusa">
             <img class="content-box__thumbnail" src="images/gallery/image-9.thumbnail.jpg" alt="Zdjęcie garbusa">
-        </div>
-    </section>
+        </section>
+    </main>
     <div id="imageBox" class="image-box hidden">
         <div class="image-box__icon image-box__icon--next"><i></i></div>
         <div class="image-box__icon image-box__icon--previous"><i></i></div>

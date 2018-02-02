@@ -1,27 +1,39 @@
-function attachMenuButtonListener() {
+function attachMenuButtonListener(value) {
+    const option = value;
     const navItems = document.querySelector('.nav__items');
     const navButton = document.querySelector('.nav__button');
 
-    navButton.addEventListener('click', function () {
-        navItems.classList.toggle('nav__items--toggle');
-        attachTargetButtonsListener();
-    });
+    switch (option) {
+        case open:
+            if (!navItems.classList.contains('nav__items--toggle')) navItems.classList.add('nav__items--toggle');
+            break;
+        default:
+            navButton.addEventListener('click', function () {
+                navItems.classList.toggle('nav__items--toggle');
+                attachTargetButtonsListener();
+            });
+    }
+
 }
 
 function attachTargetButtonsListener() {
     const navItemsButton = document.querySelectorAll('.nav__items-button');
+    const contentBox = document.querySelector('.content-box');
+    const welcomeHeader = document.querySelector('.welcome-header');
 
     navItemsButton.forEach(function (value) {
         value.addEventListener('click', function (event) {
             let contentId = document.getElementById(event.currentTarget.name),
-                activeContent = document.querySelector('.active'),
+                clickedNavItemsButton = event.currentTarget.classList,
                 activeNavItemsButton = document.querySelector('.nav__items-button--active'),
-                clickedNavItemsButton = event.currentTarget.classList;
+                activeContent = document.querySelector('.active');
+            
+            welcomeHeader.classList.add('hidden');
+            contentBox.classList.remove('hidden');
 
             if (!contentId.classList.contains('active')) {
                 activeContent.classList.remove('active');
                 contentId.classList.add('active');
-                clickedNavItemsButton.add('nav__items-button--active')
             }
 
             if (activeNavItemsButton.classList.contains('nav__items-button--active')) {
@@ -30,6 +42,26 @@ function attachTargetButtonsListener() {
             }
         });
     });
+}
+
+function attachOfferLinkListener() {
+    const contentBox = document.querySelector('.content-box');
+    const welcomeHeader = document.querySelector('.welcome-header');
+    const offerLink = document.querySelector('.welcome-header__text--link');
+    const activeNavItemsButton = document.querySelector('.nav__items-button--active');
+
+    offerLink.addEventListener('click', function () {
+        let offerContent = document.getElementById('offer'),
+            offerNavButton = document.querySelector('a[name="offer"]');
+
+        contentBox.classList.remove('hidden');
+        welcomeHeader.classList.add('hidden');
+
+        offerContent.classList.add('active');
+        activeNavItemsButton.classList.remove('nav__items-button--active');
+        offerNavButton.classList.add('nav__items-button--active');
+        attachMenuButtonListener(open);
+    })
 }
 
 function attachThumbnailsListener() {
@@ -115,3 +147,4 @@ function resetImageLoadingAndErrorCheck() {
 attachMenuButtonListener();
 attachThumbnailsListener();
 attachGalleryBoxButtonListener();
+attachOfferLinkListener();

@@ -10,24 +10,22 @@ html, body {
     width: 100%;
 }
 
-header {
-    height: 50px;
-    position: fixed;
-    width: 100%;
+h1 {
+    font-size: 4em;
 }
 
 h2 {
-    line-height: 60px;
+    line-height: 2em;
     font-size: 2.4em;
 }
 
 h3 {
-    line-height: 40px;
+    line-height: 1.8em;
     font-size: 1.9em;
 }
 
 p {
-    line-height: 30px;
+    line-height: 1em;
     font-size: 1.5em;
 }
 
@@ -53,7 +51,55 @@ p {
     background-attachment: fixed;
 }
 
+.welcome-header {
+    max-height: 90vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    text-align: center;
+    padding: 2%;
+    background-color: rgba(39, 14, 14, 0.8);
+}
+
+.welcome-header__text--big {
+    padding: 1em 1em;
+}
+
+@keyframes shake {
+    0%, {
+        transform: translate(0, 0) rotate(0);
+    }
+    5% {
+        transform: translate(0px, -8px) rotate(8deg);
+    }
+    10% {
+        transform: translate(1px, 5px) rotate(-8deg);
+    }
+    15% {
+        transform: translate(6px, -1px) rotate(0deg);
+    }
+    20% {
+        transform: translate(5px, -2px) rotate(10deg);
+    }
+    25% {
+        transform: translate(-2px, -3px) rotate(-14deg);
+    }
+    30% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+
+.welcome-header__text--link {
+    font-size: 1em;
+    text-decoration: none;
+    display: inline-block;
+    animation: shake 2s ease-in-out infinite;
+    transform-origin: center center;
+}
+
 .nav {
+    position: fixed;
     background-color: rgba(39, 14, 14, 0.8);
     display: flex;
     align-items: center;
@@ -119,15 +165,6 @@ p {
     transform: translateX(-50%);
     display: flex;
     z-index: 1;
-}
-
-.content-box__main {
-    padding: 0;
-    font-size: 6em;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
 }
 
 .content-box__offer, .content-box__contact {
@@ -347,7 +384,7 @@ p {
     animation-delay: 0.75s;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (min-height: 430px) {
     * {
         font-size: 15px;
     }
@@ -358,20 +395,21 @@ p {
         top: 5%;
     }
 
-    header {
-        bottom: 10px;
-    }
-
     h2 {
-        line-height: 100px;
+        line-height: 2.2em;
     }
 
     h3 {
-        line-height: 70px;
+        line-height: 2em;
+    }
+
+    .welcome-header__text--big {
+        padding: 0.5em 3em;
     }
 
     .nav {
         background-color: transparent;
+        bottom: 10px;
     }
 
     .nav__button {
@@ -411,6 +449,10 @@ p {
 }
 
 @media (min-width: 1200px) {
+    .welcome-header__text--big {
+        padding: 1.5em 6em;
+    }
+
     .content-box {
         left: 10%;
         top: 10%;
