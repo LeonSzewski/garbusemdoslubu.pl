@@ -4,11 +4,18 @@ Jest to moja pierwsza strona internetowa. Chciałem stworzyć ją w czystym jęz
 
 Założenia:
 
-1. **rwd** - w pełni responsywna strona zgodna z zasadą mobile first 
-1. **prostota** - strona ma być jak najprostsza, bez zbędnych fajerwerków 
-1. **jedna strona** - cała zawartość wyświetlana na jednej stronie, bez przewijania
++ **rwd** - w pełni responsywna strona zgodna z zasadą mobile first 
++ **prostota** - strona ma być jak najprostsza, bez zbędnych fajerwerków 
++ **jedna strona** - cała zawartość wyświetlana na jednej stronie, bez przewijania
 
 Linki:
 
 + [garbusemdoslubu.pl](http://garbusemdoslubu.pl)
 + [garbus.szczecin.pl](http://garbus.szczecin.pl)
+
+Użyte technologie:
+
++ JavaScript
++ HTML5
++ CSS3
++ BEM

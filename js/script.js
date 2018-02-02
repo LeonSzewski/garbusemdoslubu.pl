@@ -13,7 +13,6 @@ function attachMenuButtonListener(value) {
                 attachTargetButtonsListener();
             });
     }
-
 }
 
 function attachTargetButtonsListener() {
@@ -27,7 +26,7 @@ function attachTargetButtonsListener() {
                 clickedNavItemsButton = event.currentTarget.classList,
                 activeNavItemsButton = document.querySelector('.nav__items-button--active'),
                 activeContent = document.querySelector('.active');
-            
+
             welcomeHeader.classList.add('hidden');
             contentBox.classList.remove('hidden');
 
