@@ -18,4 +18,4 @@ Użyte technologie:
 + JavaScript
 + HTML5
 + CSS3
-+ BEM
++ BEM CSS
