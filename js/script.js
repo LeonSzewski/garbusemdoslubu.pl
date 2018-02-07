@@ -1,9 +1,8 @@
 function attachMenuButtonListener(value) {
-    const option = value,
-        navItems = document.querySelector('.nav__items'),
+    const navItems = document.querySelector('.nav__items'),
         navButton = document.querySelector('.nav__button');
 
-    switch (option) {
+    switch (value) {
         case open:
             if (!navItems.classList.contains('nav__items--toggle')) navItems.classList.add('nav__items--toggle');
             break;
@@ -21,7 +20,8 @@ function attachTargetButtonsListener() {
 
     navItemsButton.forEach(function (value) {
         value.addEventListener('click', function (event) {
-            let contentId = document.getElementById(event.currentTarget.name),
+            let clickedButton = event.currentTarget.id.replace('-button', ''),
+                contentId = document.getElementById(clickedButton),
                 clickedNavItemsButton = event.currentTarget.classList,
                 activeNavItemsButton = document.querySelector('.nav__items-button--active'),
                 activeContent = document.querySelector('.active');
