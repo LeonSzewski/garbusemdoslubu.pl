@@ -1,7 +1,7 @@
 function attachMenuButtonListener(value) {
-    const option = value;
-    const navItems = document.querySelector('.nav__items');
-    const navButton = document.querySelector('.nav__button');
+    const option = value,
+        navItems = document.querySelector('.nav__items'),
+        navButton = document.querySelector('.nav__button');
 
     switch (option) {
         case open:
@@ -10,15 +10,14 @@ function attachMenuButtonListener(value) {
         default:
             navButton.addEventListener('click', function () {
                 navItems.classList.toggle('nav__items--toggle');
-                attachTargetButtonsListener();
             });
     }
 }
 
 function attachTargetButtonsListener() {
-    const navItemsButton = document.querySelectorAll('.nav__items-button');
-    const contentBox = document.querySelector('.content-box');
-    const welcomeHeader = document.querySelector('.welcome-header');
+    const navItemsButton = document.querySelectorAll('.nav__items-button'),
+        contentBox = document.querySelector('.content-box'),
+        welcomeHeader = document.querySelector('.welcome-header');
 
     navItemsButton.forEach(function (value) {
         value.addEventListener('click', function (event) {
@@ -44,10 +43,10 @@ function attachTargetButtonsListener() {
 }
 
 function attachOfferLinkListener() {
-    const contentBox = document.querySelector('.content-box');
-    const welcomeHeader = document.querySelector('.welcome-header');
-    const offerLink = document.querySelector('.welcome-header__text--link');
-    const activeNavItemsButton = document.querySelector('.nav__items-button--active');
+    const contentBox = document.querySelector('.content-box'),
+        welcomeHeader = document.querySelector('.welcome-header'),
+        offerLink = document.querySelector('.welcome-header__text--link'),
+        activeNavItemsButton = document.querySelector('.nav__items-button--active');
 
     offerLink.addEventListener('click', function () {
         let offerContent = document.getElementById('offer'),
@@ -64,9 +63,9 @@ function attachOfferLinkListener() {
 }
 
 function attachThumbnailsListener() {
-    const contentBoxThumbnails = Array.from(document.querySelectorAll('.content-box__thumbnail'));
-    const imageInImageBox = document.querySelector('.image-box__image');
-    const imageBox = document.querySelector('.image-box');
+    const contentBoxThumbnails = Array.from(document.querySelectorAll('.content-box__thumbnail')),
+        imageInImageBox = document.querySelector('.image-box__image'),
+        imageBox = document.querySelector('.image-box');
 
     contentBoxThumbnails.map(function (value) {
         value.addEventListener('click', function (event) {
@@ -80,12 +79,12 @@ function attachThumbnailsListener() {
 }
 
 function attachGalleryBoxButtonListener() {
-    const contentBoxThumbnails = Array.from(document.querySelectorAll('.content-box__thumbnail'));
-    const imageBox = document.querySelector('.image-box');
-    const imageInImageBox = document.querySelector('.image-box__image');
-    const closeButton = document.querySelector('.image-box__icon--close');
-    const nextButton = document.querySelector('.image-box__icon--next');
-    const previousButton = document.querySelector('.image-box__icon--previous');
+    const contentBoxThumbnails = Array.from(document.querySelectorAll('.content-box__thumbnail')),
+        imageBox = document.querySelector('.image-box'),
+        imageInImageBox = document.querySelector('.image-box__image'),
+        closeButton = document.querySelector('.image-box__icon--close'),
+        nextButton = document.querySelector('.image-box__icon--next'),
+        previousButton = document.querySelector('.image-box__icon--previous');
 
     closeButton.addEventListener('click', function () {
         resetImageLoadingAndErrorCheck();
@@ -116,10 +115,10 @@ function attachGalleryBoxButtonListener() {
 }
 
 function imageLoadingAndErrorCheck() {
-    const imageInImageBox = document.querySelector('.image-box__image');
-    const loader = document.querySelector('.loader');
-    const squareBox = document.querySelector('.loader__square-box');
-    const imageLoadingError = document.querySelector('.loader__error');
+    const imageInImageBox = document.querySelector('.image-box__image'),
+        loader = document.querySelector('.loader'),
+        squareBox = document.querySelector('.loader__square-box'),
+        imageLoadingError = document.querySelector('.loader__error');
 
     imageInImageBox.addEventListener('load', function () {
         resetImageLoadingAndErrorCheck();
@@ -134,9 +133,9 @@ function imageLoadingAndErrorCheck() {
 }
 
 function resetImageLoadingAndErrorCheck() {
-    const imageLoadingAnimation = document.querySelector('.loader');
-    const squareBox = document.querySelector('.loader__square-box');
-    const imageLoadingError = document.querySelector('.loader__error');
+    const imageLoadingAnimation = document.querySelector('.loader'),
+        squareBox = document.querySelector('.loader__square-box'),
+        imageLoadingError = document.querySelector('.loader__error');
 
     imageLoadingAnimation.classList.remove('hidden');
     imageLoadingError.classList.remove('loader__error--show');
@@ -144,6 +143,7 @@ function resetImageLoadingAndErrorCheck() {
 }
 
 attachMenuButtonListener();
+attachOfferLinkListener();
+attachTargetButtonsListener();
 attachThumbnailsListener();
 attachGalleryBoxButtonListener();
-attachOfferLinkListener();
