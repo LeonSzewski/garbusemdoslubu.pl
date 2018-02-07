@@ -87,8 +87,8 @@ function attachGalleryBoxButtonListener() {
         previousButton = document.querySelector('.image-box__icon--previous');
 
     closeButton.addEventListener('click', function () {
-        resetImageLoadingAndErrorCheck();
         imageBox.classList.remove('active');
+        resetImageLoadingAndErrorCheck();
     });
 
     nextButton.addEventListener('click', function () {
