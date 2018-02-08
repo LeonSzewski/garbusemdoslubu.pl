@@ -304,7 +304,7 @@ p {
     bottom: 10px;
 }
 
-.image-box__icon--next i, .image-box__icon--previous i {
+.image-box__icon--next:before, .image-box__icon--previous:before {
     height: 1.7em;
     width: 1.7em;
     border: solid #ffffff;
@@ -314,12 +314,14 @@ p {
     top: -15%;
 }
 
-.image-box__icon--next i {
+.image-box__icon--next:before {
+    content: '';
     transform: rotate(-45deg);
     right: 20%;
 }
 
-.image-box__icon--previous i {
+.image-box__icon--previous:before {
+    content: '';
     transform: rotate(135deg);
     right: 80%;
 }
