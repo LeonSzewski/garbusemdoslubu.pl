@@ -1,3 +1,13 @@
+
+/*BASIC SETTINGS*/
+/*HEADER*/
+/*NAVIGATION*/
+/*MAIN CONTENT*/
+/*IMAGE BROWSER*/
+/*RWD PROPERTIES*/
+
+/*BASIC SETTINGS*/
+
 * {
     margin: 0;
     font-family: 'Lato', sans-serif;
@@ -51,6 +61,8 @@ p {
     background-attachment: fixed;
 }
 
+/*HEADER*/
+
 .welcome-header {
     max-height: 90vh;
     position: absolute;
@@ -97,6 +109,8 @@ p {
     animation: shake 2s ease-in-out infinite;
     transform-origin: center center;
 }
+
+/*NAVIGATION*/
 
 .nav {
     position: fixed;
@@ -155,6 +169,8 @@ p {
     transition: linear 0s, opacity 300ms;
 }
 
+/*MAIN CONTENT*/
+
 .content-box {
     background-color: rgba(39, 14, 14, 0.8);
     width: 300px;
@@ -208,6 +224,8 @@ p {
 .content-box__thumbnail:hover {
     filter: none;
 }
+
+/*IMAGE BROWSER*/
 
 .image-box {
     width: fit-content;
@@ -383,6 +401,8 @@ p {
 .loader__square--delay {
     animation-delay: 0.75s;
 }
+
+/*RWD PROPERTIES*/
 
 @media (min-width: 768px) and (min-height: 430px) {
     * {
