@@ -1,113 +1,176 @@
-function openMenu() {
-    let menu = document.querySelector('.menu'),
-        menuButton = document.querySelectorAll('.button'), navButton = document.querySelector('.navButton');
+function attachNavButtonListener(value) {
+    const navItems = document.querySelector('.nav__items'),
+        navItemsCheck = !navItems.classList.contains('nav__items--toggle');
 
-    navButton.addEventListener('click', function (event) {
-        menu.classList.toggle('navOpenClose');
-        menuButton.forEach(function (value) {
-            value.addEventListener('click', function (event) {
-                let contentId = document.getElementById(event.currentTarget.name),
-                    activeContent = document.querySelector('.active'),
-                    activeMenuButton = document.querySelector('.activeMenuButton'),
-                    clickedMenuButton = event.currentTarget.classList;
+    switch (value) {
+        case 'openMenu':
+            if (navItemsCheck) navItems.classList.add('nav__items--toggle');
+            break;
+        default:
+            navButtonListener();
+    }
 
-                if (!contentId.classList.contains('active')) {
-                    activeContent.classList.remove('active');
-                    contentId.classList.add('active');
-                    clickedMenuButton.add('activeMenuButton')
-                }
+    function navButtonListener() {
+        const navButton = document.querySelector('.nav__button');
 
-                if (activeMenuButton.classList.contains('activeMenuButton')) {
-                    activeMenuButton.classList.remove('activeMenuButton');
-                    clickedMenuButton.add('activeMenuButton');
-                }
-            });
-        });
-    });
+        navButton.addEventListener('click', function () {
+            navItems.classList.toggle('nav__items--toggle');
+        })
+    }
 }
 
-function openGalleryBox() {
-    let thumbnails = Array.from(document.querySelectorAll('.gallery img')),
-        imageBox = document.querySelector('#imageBox'),
-        imageInGalleryBox = document.querySelector('#imageBox img'),
-        closeButton = document.querySelector('.close'),
-        nextButton = document.querySelector('.next'),
-        previousButton = document.querySelector('.previous');
+function attachTargetButtonsListener(contentBox, welcomeHeader) {
+    const navItemsButton = document.querySelectorAll('.nav__items-button');
 
-        thumbnails.map(function (value) {
+    navItemsButton.forEach(function (value) {
         value.addEventListener('click', function (event) {
-            let imageSrc = event.currentTarget.src.replace('thumbnail.jpg', 'jpg');
-            imageBox.classList.add('active');
-            imageInGalleryBox.setAttribute('src', imageSrc);
-
+            openContentBox(event)
         });
     });
 
-    closeButton.addEventListener('click', function (event) {
+    function openContentBox(event) {
+        let clickedButton = event.currentTarget.id.replace('-button', ''),
+            contentId = document.getElementById(clickedButton),
+            clickedNavItemsButton = event.currentTarget.classList,
+            activeNavItemsButton = document.querySelector('.nav__items-button--active'),
+            activeContent = document.querySelector('.active'),
+            activeNavItemsButtonCheck = activeNavItemsButton.classList.contains('nav__items-button--active');
+
+        welcomeHeader.classList.add('hidden');
+        contentBox.classList.remove('hidden');
+
+        if (!contentId.classList.contains('active')) {
+            activeContent.classList.remove('active');
+            contentId.classList.add('active');
+        }
+
+        if (activeNavItemsButtonCheck) {
+            activeNavItemsButton.classList.remove('nav__items-button--active');
+            clickedNavItemsButton.add('nav__items-button--active');
+        }
+    }
+}
+
+function attachOfferLinkListener(contentBox, welcomeHeader) {
+    const offerLink = document.querySelector('.welcome-header__text--link'),
+        activeNavItemsButton = document.querySelector('.nav__items-button--active');
+
+    offerLink.addEventListener('click', function () {openOfferLink()});
+
+    function openOfferLink() {
+        let offerContent = document.getElementById('offer'),
+            offerNavButton = document.querySelector('a[id="offer-button"]');
+
+        contentBox.classList.remove('hidden');
+        welcomeHeader.classList.add('hidden');
+
+        offerContent.classList.add('active');
+        activeNavItemsButton.classList.remove('nav__items-button--active');
+        offerNavButton.classList.add('nav__items-button--active');
+        attachNavButtonListener('openMenu');
+    }
+}
+
+function attachThumbnailsListener(imageBox, contentBoxThumbnails) {
+    let imageInImageBox = document.querySelector('.image-box__image');
+
+    contentBoxThumbnails.map(function (value) {
+        value.addEventListener('click', function () {
+            openClickedImage(event)
+        });
+    });
+
+    function openClickedImage(event) {
+        let imageSource = event.currentTarget.src.replace('thumbnail.jpg', 'jpg');
+
+        imageBox.classList.add('active');
+        imageInImageBox.setAttribute('src', imageSource);
+        imageLoadingAndErrorCheck('', imageInImageBox);
+    }
+}
+
+function attachGalleryBoxButtonListener(imageBox, contentBoxThumbnails) {
+    const closeButton = document.querySelector('.image-box__icon--close'),
+        nextButton = document.querySelector('.image-box__icon--next'),
+        previousButton = document.querySelector('.image-box__icon--previous');
+
+    let imageInImageBox = document.querySelector('.image-box__image');
+
+    closeButton.addEventListener('click', function () {close()});
+    nextButton.addEventListener('click', function () {next()});
+    previousButton.addEventListener('click', function () {previous()});
+
+    function close() {
         imageBox.classList.remove('active');
-    });
+        imageLoadingAndErrorCheck('reset');
+    }
 
-    nextButton.addEventListener('click', function (event) {
+    function next() {
+        for (let i = 0; i < contentBoxThumbnails.length - 1; i++) {
+            if (i === contentBoxThumbnails.length - 1) return;
 
-        for (let i=0; i < thumbnails.length - 1; i++) {
-            if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === imageInGalleryBox.getAttribute('src')) {
-                return imageInGalleryBox.setAttribute('src', thumbnails[i+1].src.replace('thumbnail.jpg', 'jpg'));
+            let nextImage = contentBoxThumbnails[i + 1].src.replace('thumbnail.jpg', 'jpg');
+            if (contentBoxThumbnails[i].src.replace('thumbnail.jpg', 'jpg') === imageInImageBox.getAttribute('src')) {
+                return imageInImageBox.setAttribute('src', nextImage);
             }
         }
-    });
+        imageLoadingAndErrorCheck('', imageInImageBox);
+    }
 
-    previousButton.addEventListener('click', function (event) {
+    function previous() {
+        for (let i = contentBoxThumbnails.length - 1; i > 0 - 1; i--) {
+            if (i === 0) return;
 
-        for (let i=1; i < thumbnails.length; i++) {
-            if (thumbnails[i].src.replace('thumbnail.jpg', 'jpg') === imageInGalleryBox.getAttribute('src')) {
-                return imageInGalleryBox.setAttribute('src', thumbnails[i-1].src.replace('thumbnail.jpg', 'jpg'));
+            let previousImage = contentBoxThumbnails[i - 1].src.replace('thumbnail.jpg', 'jpg');
+            if (contentBoxThumbnails[i].src.replace('thumbnail.jpg', 'jpg') === imageInImageBox.getAttribute('src')) {
+                return imageInImageBox.setAttribute('src', previousImage);
             }
         }
-    });
-
-    imageLoadingAndErrorCheck();
-
+        imageLoadingAndErrorCheck('', imageInImageBox);
+    }
 }
 
-function imageLoadingAndErrorCheck() {
-    const image = document.querySelector('.imageBoxImage-img');
-    const imageBox = document.querySelector('#imageBox');
-    const loadingImageAnimation = document.querySelector('.imageLoading');
+function imageLoadingAndErrorCheck(value, imageInImageBox) {
+    const loader = document.querySelector('.loader'),
+        squareBox = document.querySelector('.loader__square-box'),
+        imageLoadingError = document.querySelector('.loader__error'),
+        imageLoadingAnimation = document.querySelector('.loader');
 
-    image.addEventListener('load', function () {
-        console.log('dupa');
-        loadingImageAnimation.classList.add('hidden');
-        imageBox.classList.remove('imageError');
-    });
+    switch (value) {
+        case 'reset':
+            reset();
+            break;
+        default:
+            imageInImageBox.addEventListener('load', function () {
+                reset();
+                loader.classList.add('hidden');
+            });
 
-    image.addEventListener('error', function () {
-        loadingImageAnimation.classList.remove('hidden');
-        imageBox.classList.add('imageError');
-    });
+            imageInImageBox.addEventListener('error', function () {
+                reset();
+                imageLoadingError.classList.add('loader__error--show');
+                squareBox.classList.add('loader__square-box--hide');
+            });
+    }
+
+    function reset() {
+        imageLoadingAnimation.classList.remove('hidden');
+        imageLoadingError.classList.remove('loader__error--show');
+        squareBox.classList.remove('loader__square-box--hide');
+    }
 }
 
-// if (document.querySelector('.imageBoxImage-img').onload = function() {
-//     console.log('wsdwwwwwwwwwww')
-//     return false;
-// }) {
-//     let loadingImageAnimation = document.querySelector('.imageLoading');
-//     loadingImageAnimation.classList.add('hidden');
-// } else {
-//     console.log('dsjmodwmo');
-// }
+function attachSiteListener() {
+    const contentBox = document.querySelector('.content-box'),
+        welcomeHeader = document.querySelector('.welcome-header'),
+        imageBox = document.querySelector('.image-box'),
+        contentBoxThumbnails = Array.from(document.querySelectorAll('.content-box__thumbnail'));
 
-//
-// const onLoadImage = new Promise (function (resolve, reject) {
-//     if (document.querySelector('.imageBoxImage-img').onload = function() {return true}) {
-//         let loadingImageAnimation = document.querySelector('.imageLoading');
-//         resolve(loadingImageAnimation.classList.add('hidden'));
-//     } else {
-//         reject(console.log('dsjmodwmo'));
-//     }
-// });
-//
-//
-// onLoadImage.then().catch();
+    attachNavButtonListener();
+    attachOfferLinkListener(contentBox, welcomeHeader);
+    attachTargetButtonsListener(contentBox, welcomeHeader);
+    attachThumbnailsListener(imageBox, contentBoxThumbnails);
+    attachGalleryBoxButtonListener(imageBox, contentBoxThumbnails);
+}
 
-openMenu();
-openGalleryBox();
+attachSiteListener();
