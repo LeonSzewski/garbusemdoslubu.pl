@@ -75,7 +75,7 @@ function attachThumbnailsListener(imageBox, contentBoxThumbnails) {
     let imageInImageBox = document.querySelector('.image-box__image');
 
     contentBoxThumbnails.map(function (value) {
-        value.addEventListener('click', function () {
+        value.addEventListener('click', function (event) {
             openClickedImage(event)
         });
     });
